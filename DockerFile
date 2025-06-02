@@ -1,0 +1,19 @@
+# Usar la imagen oficial de Node.JS
+FROM node:23
+
+# Establecer el directorio de trabajo dentro del contenedor
+WORKDIR /usr/app
+
+# Copiar los archivos de configuracion de la aplicacion
+COPY package*.json ./
+# Instalar las dependencias de la aplicacion
+RUN npm install
+# Copiar el resto de los archivos de la aplicacion
+COPY . .
+
+# Puerto que se va a exponer
+EXPOSE 3000
+
+# COmando para iniciar la aplicacion
+CMD ["node", "app.js"]
+
